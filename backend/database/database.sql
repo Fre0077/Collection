@@ -1,0 +1,36 @@
+CREATE TABLE item_attribute (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	item_id INTEGER NOT NULL,
+	attribute_id INTEGER NOT NULL,
+	FOREIGN KEY (item_id) REFERENCES item(id),
+	FOREIGN KEY (attribute_id) REFERENCES attribute(id)
+);
+
+CREATE TABLE item (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	image TEXT NOT NULL,
+	name TEXT NOT NULL,
+	collection_id INTEGER NOT NULL,
+	FOREIGN KEY (collection_id) REFERENCES collection(id)
+);
+
+CREATE TABLE attribute (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	type TEXT NOT NULL,
+	name TEXT NOT NULL,
+	collection_id INTEGER NOT NULL,
+	FOREIGN KEY (collection_id) REFERENCES collection(id)
+);
+
+CREATE TABLE collection (
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	user_id INTEGER NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE user (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+	surname TEXT NOT NULL,
+	password TEXT NOT NULL
+);
