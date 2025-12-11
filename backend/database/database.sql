@@ -1,22 +1,26 @@
+DROP TABLE IF EXISTS item_attribute;
+DROP TABLE IF EXISTS attribute;
+DROP TABLE IF EXISTS item;
+DROP TABLE IF EXISTS collection;
+
 CREATE TABLE item_attribute (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	item_id INTEGER NOT NULL,
 	attribute_id INTEGER NOT NULL,
+	value TEXT NOT NULL,
 	FOREIGN KEY (item_id) REFERENCES item(id),
 	FOREIGN KEY (attribute_id) REFERENCES attribute(id)
 );
 
 CREATE TABLE item (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	image TEXT NOT NULL,
-	name TEXT NOT NULL,
+	--image TEXT NOT NULL,
 	collection_id INTEGER NOT NULL,
 	FOREIGN KEY (collection_id) REFERENCES collection(id)
 );
 
 CREATE TABLE attribute (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	type TEXT NOT NULL,
 	name TEXT NOT NULL,
 	collection_id INTEGER NOT NULL,
 	FOREIGN KEY (collection_id) REFERENCES collection(id)
@@ -25,6 +29,7 @@ CREATE TABLE attribute (
 CREATE TABLE collection (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
 	user_id INTEGER NOT NULL,
+	name TEXT NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
