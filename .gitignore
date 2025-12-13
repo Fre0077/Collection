@@ -1,0 +1,5 @@
+./backend/database/database.sqlite
+./backend/node_modules
+./backend/package-lock.json
+./backend/upload/*
+!backend/upload/.gitkeep

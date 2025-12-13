@@ -1,0 +1,10 @@
+usare sqlite3 in typescript. 
+
+sqlite3.Database('indirizzo'): ritorna un handle che serve per
+eseguire querry sul Database
+
+dbName.run(QUERRY, params, callback): eseguire querry che non hanno
+ritorno. per esempio INSERT, UPDATE, DELETE
+
+dbName.get / dbName.all: eseguono query che ritornano un valore,
+get ritorna un singolo valore, mentre all più tornare una lista
