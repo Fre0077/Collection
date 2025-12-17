@@ -1,5 +1,5 @@
-INSERT INTO user (name, surname, password) VALUES
-("Francesco", "De Santis", "Password12");
+INSERT INTO user (name, surname, username, email, password) VALUES
+("Francesco", "De Santis", "fdesantis", "francesco@example.com", "Password12");
 
 INSERT INTO collection (user_id, name) VALUES
 (1 ,'Tappi');

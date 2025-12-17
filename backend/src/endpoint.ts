@@ -1,31 +1,68 @@
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
-import { addUser } from './function';
-import { newUser } from './interface';
-import { internalServerError, Generic } from './exception';
+
+import { logInfo } from './logger';
+import { register, login, addCollection } from './function';
+import { Register, Login, AddCollection } from './interface';
+import { BadRequest, Unauthorized, Forbidden, NotFound, Conflict } from './exception';
 
 export async function CollectionEndpoints(fastify: FastifyInstance) {
 	// Healthcheck
 	fastify.get('/health', async () => ({ status: 'ok' }));
 
-	// Create user
-	fastify.post<{ Body: newUser }>('/adduser', async (request: FastifyRequest<{ Body: newUser }>, reply: FastifyReply) => {
-		const userData = request.body as newUser;
-		const { name, surname, password } = userData;
-		if (!name || !surname || !password) {
-			reply.code(400).send({ error: 'Dati utente inviati insufficenti' });
-			return;
-		}
-
+	// register
+	fastify.post<{ Body: Register }>('/register', async (request: FastifyRequest<{ Body: Register }>, reply: FastifyReply) => {
+		const userData = request.body as Register;
 		try {
-			await addUser(userData);
+			if (!userData.name || !userData.surname || !userData.password)
+				throw new BadRequest('Dati utente inviati insufficenti');
+			await register(userData);
+			logInfo('[201] utente aggiunto con successo');
 			reply.code(201).send({ message: 'utente aggiunto con successo' });
 		} catch (e: unknown) {
-			if (e instanceof Generic) {
-				reply.code(e.statusCode).send({ error: e.message });
+			if (e instanceof Error) {
+				reply.code((e as any).statusCode).send({ error: e.message });
 				return;
+			} else {
+				reply.code(500).send({ error: "Internal server error" });
 			}
-			const msg = e instanceof Error ? e.message : 'Errore inatteso';
-			reply.code(500).send({ error: msg });
+		}
+	});
+
+	//login
+	fastify.post<{ Body: Login }>('/login', async (request: FastifyRequest<{ Body: Login }>, reply: FastifyReply) => {
+		const userData = request.body as Login;
+		try {
+			if (!userData.email || !userData.password)
+				throw new BadRequest('Dati utente inviati insufficenti');
+			const user = await login(userData);
+			logInfo('[200] login utente completato');
+			reply.code(200).send({ message: 'Login completato', user });
+		} catch (e: unknown) {
+			if (e instanceof Error) {
+				reply.code((e as any).statusCode).send({ error: e.message });
+				return;
+			} else {
+				reply.code(500).send({ error: "Internal server error" });
+			}
+		}
+	});
+
+	//Aggiunge una collezione con degli attributi di base
+	fastify.post<{ Body: AddCollection }>('/addCollection', async (request: FastifyRequest<{ Body: AddCollection }>, reply: FastifyReply) => {
+		const userData = request.body as AddCollection;
+		try {
+			if (!userData.name || !userData.userId)
+				throw new BadRequest('Dati utente inviati insufficenti');
+			await addCollection(userData);
+			logInfo('[201] utente aggiunto con successo');
+			reply.code(201).send({ message: 'utente aggiunto con successo' });
+		} catch (e: unknown) {
+			if (e instanceof Error) {
+				reply.code((e as any).statusCode).send({ error: e.message });
+				return;
+			} else {
+				reply.code(500).send({ error: "Internal server error" });
+			}
 		}
 	});
 }

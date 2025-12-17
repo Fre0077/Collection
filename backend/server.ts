@@ -55,7 +55,14 @@ fastify.register(fastifyStatic, {
 fastify.register(CollectionEndpoints, { prefix: "/api" });
 
 // Start server
-fastify.listen({ port: 3000, host: "0.0.0.0" }, (err, address) => {
-    if (err) throw err;
-    console.log(`Collection server online → ${address}`);
-});
+async function start() {
+    try {
+        const address = await fastify.listen({ port: 3000, host: "0.0.0.0" });
+        console.log(`Collection server online → ${address}`);
+    } catch (err) {
+        fastify.log.error(err);
+        process.exit(1);
+    }
+}
+
+start();
