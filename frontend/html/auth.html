@@ -1,0 +1,59 @@
+<!-- Login Section -->
+<div id="loginSection" class="auth-container">
+    <div class="card">
+        <h1>Collection Manager</h1>
+        
+        <div id="loginForm">
+            <h2 style="font-size: 20px; margin-bottom: 20px; color: #333;">Login</h2>
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" placeholder="email@example.com" required>
+                <div class="error hidden" id="loginEmailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="••••••••" required>
+                <div class="error hidden" id="loginPasswordError"></div>
+            </div>
+            <button onclick="handleLogin()">Login</button>
+            <div class="error hidden" id="loginError"></div>
+            <div class="toggle-link">
+                Non hai un account? <a onclick="toggleAuthForm()">Registrati</a>
+            </div>
+        </div>
+
+        <div id="registerForm" class="hidden">
+            <h2 style="font-size: 20px; margin-bottom: 20px; color: #333;">Registrazione</h2>
+            <div class="form-group">
+                <label for="regName">Nome</label>
+                <input type="text" id="regName" placeholder="Mario" required>
+                <div class="error hidden" id="regNameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="regSurname">Cognome</label>
+                <input type="text" id="regSurname" placeholder="Rossi" required>
+                <div class="error hidden" id="regSurnameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="regUsername">Username</label>
+                <input type="text" id="regUsername" placeholder="mariorossi" required>
+                <div class="error hidden" id="regUsernameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="regEmail">Email</label>
+                <input type="email" id="regEmail" placeholder="email@example.com" required>
+                <div class="error hidden" id="regEmailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" placeholder="••••••••" required>
+                <div class="error hidden" id="regPasswordError"></div>
+            </div>
+            <button onclick="handleRegister()">Registrati</button>
+            <div class="error hidden" id="registerError"></div>
+            <div class="toggle-link">
+                Hai già un account? <a onclick="toggleAuthForm()">Login</a>
+            </div>
+        </div>
+    </div>
+</div>

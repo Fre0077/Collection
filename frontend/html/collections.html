@@ -1,0 +1,27 @@
+<!-- Collections List View -->
+<div id="collectionsView" class="container hidden">
+    <div class="card">
+        <div class="account-header">
+            <div class="user-info">
+                <h2 id="userName">Caricamento...</h2>
+                <p id="userEmail">Email</p>
+            </div>
+            <button class="logout-btn" onclick="handleLogout()">Logout</button>
+        </div>
+
+        <!-- Aggiungi Collezione -->
+        <div class="section-box">
+            <h3>➕ Aggiungi Collezione</h3>
+            <input type="text" id="collectionName" placeholder="Nome Collezione" />
+            <input type="number" id="numAttributes" placeholder="Numero Attributi" min="0" />
+            <div id="attributeInputs" class="attribute-inputs"></div>
+            <button onclick="createCollection()">Crea Collezione</button>
+        </div>
+
+        <!-- Lista Collezioni -->
+        <div class="section-box">
+            <h3>📚 Le tue Collezioni</h3>
+            <div id="collectionsList" class="collection-list loading">Caricamento collezioni...</div>
+        </div>
+    </div>
+</div>

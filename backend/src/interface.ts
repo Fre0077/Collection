@@ -16,3 +16,18 @@ export interface AddCollection {
 	userId:		number;
 	attribute?:	String[];
 }
+
+export interface GetCollection {
+	collectionId:	number[];
+	name:			string[];
+}
+
+export interface AddAttribute {
+	attribute:		String;
+	collectionId:	number;
+}
+
+export interface AddItem {
+	collectionId:	String;
+	attribute?:		String[];
+}

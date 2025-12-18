@@ -1,0 +1,30 @@
+.collection-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.collection-card {
+    background: white;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.collection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+}
+
+.collection-card h4 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.collection-card p {
+    color: #999;
+    font-size: 14px;
+}

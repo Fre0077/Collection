@@ -21,7 +21,7 @@ CREATE TABLE item_attribute (
 
 CREATE TABLE attribute (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	name TEXT NOT NULL,
+	name TEXT NOT NULL UNIQUE,
 	collection_id INTEGER NOT NULL,
 	FOREIGN KEY (collection_id) REFERENCES collection(id)
 );
