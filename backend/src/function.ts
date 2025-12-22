@@ -4,6 +4,7 @@ import path from 'path';
 import { Register, Login, AddCollection, GetCollection, AddAttribute, AddItem } from './interface';
 import { BadRequest, Unauthorized, Forbidden, NotFound, Conflict, InternalServerError } from './exception';
 import { logError } from './logger';
+import { rejects } from 'assert';
 
 function getDb(): sqlite3.Database {
 	sqlite3.verbose();
@@ -12,9 +13,9 @@ function getDb(): sqlite3.Database {
 }
 
 export async function register(user: Register): Promise<void> {
-	const db = getDb();
-	const INSERT_USER = 'INSERT INTO user(name, surname, username, email, password) VALUES (?, ?, ?, ?, ?)';
-	const params = [user.name, user.surname, user.username, user.email, user.password];
+	const	db = getDb();
+	const	INSERT_USER = 'INSERT INTO user(name, surname, username, email, password) VALUES (?, ?, ?, ?, ?)';
+	const	params = [user.name, user.surname, user.username, user.email, user.password];
 
 	await new Promise<void>((resolve, reject) => {
 		db.run(INSERT_USER, params, function (err) {
@@ -30,8 +31,8 @@ export async function register(user: Register): Promise<void> {
 }
 
 export async function login(user: Login): Promise<{ id: number; name: string; surname: string; email: string }> {
-	const db = getDb();
-	const SELECT_USER_BY_EMAIL = 'SELECT id, name, surname, password, email FROM user WHERE email = ?';
+	const	db = getDb();
+	const	SELECT_USER_BY_EMAIL = 'SELECT id, name, surname, password, email FROM user WHERE email = ?';
 
 	return await new Promise((resolve, reject) => {
 		db.get(SELECT_USER_BY_EMAIL, [user.email], function (err, row: any) {
@@ -123,9 +124,25 @@ export async function getCollection(userId: number): Promise<GetCollection> {
 	return collections;
 }
 
+export async function removeCollection(collectionName: string): Promise<void> {
+	const	db = getDb();
+	const	REMOVE_COLLECTION = "REMOVE FROM collection WHERE name = ?";
+
+	await new Promise<void>((resolve, reject) => {
+		db.run(REMOVE_COLLECTION, [collectionName], function (err) {
+			if (err) {
+				db.close();
+				reject(new InternalServerError('Errore durante la rimozione della collezione'));
+				return;
+			}
+			resolve();
+		});
+	});
+}
+
 export async function addAttribute(addAttribute: AddAttribute): Promise<void> {
-	const db = getDb();
-	const INSERT_ATTRIBUTE = 'INSERT INTO attribute (name, collection_id) VALUES (?, ?)';
+	const	db = getDb();
+	const	INSERT_ATTRIBUTE = 'INSERT INTO attribute (name, collection_id) VALUES (?, ?)';
 	
 	await new Promise<void>((resolve, reject) => {
 		db.run(INSERT_ATTRIBUTE, [addAttribute.attribute, addAttribute.collectionId], function (err) {
@@ -161,10 +178,10 @@ export async function getAttribute(collectionId: number): Promise<string[]> {
 }
 
 export async function addItem(addItem: AddItem): Promise<void> {
-	const db = getDb();
-	const INSERT_ITEM = 'INSERT INTO item (collection_id) VALUES (?)';
-	const SELECT_ATTRIBUTE = 'SELECT id FROM attribute WHERE collection_id = ?';
-	const INSERT_ITEM_ATTRIBUTE = 'INSERT INTO item_attribute (item_id, attribute_id, value) VALUES (?, ?, ?)';
+	const	db = getDb();
+	const	INSERT_ITEM = 'INSERT INTO item (collection_id) VALUES (?)';
+	const	SELECT_ATTRIBUTE = 'SELECT id FROM attribute WHERE collection_id = ?';
+	const	INSERT_ITEM_ATTRIBUTE = 'INSERT INTO item_attribute (item_id, attribute_id, value) VALUES (?, ?, ?)';
 
 	await new Promise<void>((resolve, reject) => {
 		db.serialize(() => {
@@ -213,6 +230,22 @@ export async function addItem(addItem: AddItem): Promise<void> {
 					});
 				});
 			});
+		});
+	});
+}
+
+export async function removeAttribute(attributeName: string): Promise<void> {
+	const	db = getDb();
+	const	REMOVE_ATTRIBUTE = "REMOVE FROM attribute WHERE name = ?"
+
+	await new Promise<void> ((resolve, reject) => {
+		db.run(REMOVE_ATTRIBUTE, [attributeName], function (err) {
+			if (err) {
+				db.close();
+				reject(new InternalServerError("Errore durante la rimozione dell'attributo"));
+				return;
+			}
+			resolve();
 		});
 	});
 }

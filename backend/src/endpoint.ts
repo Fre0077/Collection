@@ -1,7 +1,7 @@
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 
 import { logInfo } from './logger';
-import { register, login, addCollection, getCollection, addAttribute, getAttribute, addItem, getItem } from './function';
+import { register, login, addCollection, getCollection, removeCollection, addAttribute, getAttribute, addItem, getItem } from './function';
 import { Register, Login, AddCollection, GetCollection, AddAttribute, AddItem } from './interface';
 import { BadRequest, Unauthorized, Forbidden, NotFound, Conflict } from './exception';
 
@@ -75,6 +75,25 @@ export async function CollectionEndpoints(fastify: FastifyInstance) {
 			const collections = await getCollection(parseInt(userId));
 			logInfo('[200] collezioni recuperate con successo');
 			reply.code(200).send({ message: 'collezioni recuperate con successo', collections });
+		} catch (e: unknown) {
+			if (e instanceof Error) {
+				reply.code((e as any).statusCode).send({ error: e.message });
+				return;
+			} else {
+				reply.code(500).send({ error: "Internal server error" });
+			}
+		}
+	});
+
+	//cancella la collezione indicata
+	fastify.get<{ Querystring: { collectionName: string } }>('/removeCollection', async (request: FastifyRequest<{ Querystring: { collectionName: string } }>, reply: FastifyReply) => {
+		try {
+			const collectionName = request.query.collectionName;
+			if (!collectionName)
+				throw new BadRequest('collectionName non fornito');
+			const collections = await removeCollection(collectionName);
+			logInfo('[200] collezione rimossa con successo');
+			reply.code(200).send({ message: 'collezione rimossa con successo' });
 		} catch (e: unknown) {
 			if (e instanceof Error) {
 				reply.code((e as any).statusCode).send({ error: e.message });

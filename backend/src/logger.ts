@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 const logDir = path.join(__dirname, '../logs');
-const logFile = path.join(logDir, 'app.log');
+const logFile = path.join(logDir, 'log.log');
 
 function ensureLogDir() {
 	try {
