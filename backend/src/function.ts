@@ -61,9 +61,9 @@ export async function login(user: Login): Promise<{ id: number; name: string; su
 }
 
 export async function addCollection(collection: AddCollection): Promise<void> {
-	const db = getDb();
-	const INSERT_COLLECTION = 'INSERT INTO collection (user_id, name) VALUES (?, ?)';
-	const INSERT_ATTRIBUTE = 'INSERT INTO attribute (name, collection_id) VALUES (?, ?)';
+	const	db = getDb();
+	const	INSERT_COLLECTION = 'INSERT INTO collection (user_id, name) VALUES (?, ?)';
+	const	INSERT_ATTRIBUTE = 'INSERT INTO attribute (name, collection_id) VALUES (?, ?)';
 
 	await new Promise<void>((resolve, reject) => {
 		db.serialize(() => {
@@ -77,14 +77,11 @@ export async function addCollection(collection: AddCollection): Promise<void> {
 					});
 					return;
 				}
-				
-				const collectionId = this.lastID as number;
-				const attributes = collection.attribute ?? [];
-
-				for (let i = 0; i < attributes.length; i++) {
-					db.run(INSERT_ATTRIBUTE, [attributes[i], collectionId], function (err) {
+				const collectionId = this.lastID;
+				for (let i: number = 0; i < (collection.attribute ?? []).length; i++) {
+					db.run(INSERT_ATTRIBUTE, [(collection.attribute ?? [])[i], collectionId], function (err) {
 						if (err) {
-							db.run('ROLLBACK', () => {
+							db.run ('ROLLBACK', () => {
 								db.close();
 								reject(new InternalServerError('Errore durante la aggiungzione degli attributi'));
 							});
@@ -92,16 +89,15 @@ export async function addCollection(collection: AddCollection): Promise<void> {
 						}
 					});
 				}
-
 				db.run('COMMIT', (commitErr) => {
 					db.close();
 					if (commitErr) {
 						reject(new InternalServerError('Errore durante il commit della transazione'));
-					} else {
+					} else
 						resolve();
-					}
 				});
 			});
+
 		});
 	});
 }

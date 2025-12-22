@@ -1,41 +1,26 @@
-# Collection Manager - Frontend
+# Collection Frontend (TypeScript)
 
-Frontend per il testing degli endpoint del backend.
+Frontend TypeScript isolato dal progetto originale. Include Vite, config TS e asset necessari.
 
-## Setup
+## Requisiti
+- Node.js 18+
 
+## Sviluppo
 ```bash
-cd frontend
 npm install
-```
-
-## Development
-
-```bash
 npm run dev
 ```
+Apri http://localhost:5173
 
-Visita `http://localhost:5173` nel browser.
-
-## Build per Production
-
+## Build
 ```bash
 npm run build
+npm run preview
 ```
 
-Output sarà in `frontend/dist/`.
-
-## Features
-
-- **Login/Registrazione** con validazione
-- **Account Page** con dati utente e collezioni
-- **LocalStorage** per mantenere la sessione
-- **CORS-ready** per comunicare con backend su `http://localhost:3000`
-
-## TODO Backend Endpoints
-
-Per completare il frontend, il backend deve implementare:
-
-1. `GET /api/user/:userId` - Ritorna dati utente (id, name, surname, email)
-2. `GET /api/collections/:userId` - Ritorna lista collezioni dell'utente
-3. `GET /api/collection/:collectionId` - Ritorna dettagli collezione con attributi
+## Struttura
+- `index.html`: pagina principale (usa funzioni globali via `window.*`)
+- `js/*.ts`: moduli TypeScript (API, auth, collections, items, app)
+- `css/*`: stili
+- `types/global.d.ts`: definizioni globali (`window.API`, handler `onclick`, stato)
+- `vite.config.ts`, `tsconfig.json`: configurazioni

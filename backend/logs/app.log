@@ -120,3 +120,78 @@
 2025-12-18T22:04:10.154Z INFO [201] item aggiunto con successo
 2025-12-18T22:04:12.018Z INFO [200] attributi recuperati con successo
 2025-12-18T22:04:12.033Z INFO [200] item recuperati con successo
+2025-12-19T10:38:41.444Z INFO [201] utente aggiunto con successo
+2025-12-19T10:38:41.452Z INFO [200] login utente completato
+2025-12-19T10:38:41.459Z INFO [200] collezioni recuperate con successo
+2025-12-19T10:39:02.463Z INFO [201] collezione aggiunta con successo
+2025-12-19T10:39:02.464Z ERROR: [500] Errore durante la aggiungzione degli attributi
+2025-12-19T10:39:02.464Z ERROR: [500] Errore durante la aggiungzione degli attributi
+2025-12-19T10:42:17.290Z INFO [200] login utente completato
+2025-12-19T10:42:17.296Z INFO [200] collezioni recuperate con successo
+2025-12-19T10:42:27.908Z INFO [200] collezioni recuperate con successo
+2025-12-19T10:42:29.440Z INFO [200] attributi recuperati con successo
+2025-12-19T10:42:29.446Z INFO [200] attributi recuperati con successo
+2025-12-19T10:42:29.453Z INFO [200] item recuperati con successo
+2025-12-19T10:50:36.753Z INFO [201] collezione aggiunta con successo
+2025-12-19T10:50:36.754Z ERROR: [500] Errore durante la aggiungzione degli attributi
+2025-12-19T10:50:36.754Z ERROR: [500] Errore durante la aggiungzione degli attributi
+2025-12-19T10:59:56.527Z INFO [200] login utente completato
+2025-12-19T10:59:56.549Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:00:11.895Z INFO [201] collezione aggiunta con successo
+2025-12-19T11:00:15.705Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:00:18.482Z INFO [200] attributi recuperati con successo
+2025-12-19T11:00:18.494Z INFO [200] attributi recuperati con successo
+2025-12-19T11:00:18.513Z INFO [200] item recuperati con successo
+2025-12-19T11:00:31.581Z INFO [201] item aggiunto con successo
+2025-12-19T11:00:34.089Z INFO [200] attributi recuperati con successo
+2025-12-19T11:00:34.105Z INFO [200] item recuperati con successo
+2025-12-19T11:00:58.589Z INFO [201] item aggiunto con successo
+2025-12-19T11:01:04.315Z INFO [200] attributi recuperati con successo
+2025-12-19T11:01:04.329Z INFO [200] item recuperati con successo
+2025-12-19T11:09:29.539Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:09:44.551Z INFO [200] login utente completato
+2025-12-19T11:09:44.567Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:10:13.717Z INFO [200] attributi recuperati con successo
+2025-12-19T11:10:13.730Z INFO [200] attributi recuperati con successo
+2025-12-19T11:10:13.748Z INFO [200] item recuperati con successo
+2025-12-19T11:14:33.002Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:14:40.543Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:15:50.455Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:15:59.614Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:16:02.708Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:16:14.280Z INFO [200] login utente completato
+2025-12-19T11:16:14.296Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:19:05.140Z INFO [200] login utente completato
+2025-12-19T11:19:05.155Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:21:18.266Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:22:21.485Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:22:26.635Z INFO [200] collezioni recuperate con successo
+2025-12-19T11:22:37.255Z INFO [200] login utente completato
+2025-12-19T11:22:37.270Z INFO [200] collezioni recuperate con successo
+2025-12-19T19:44:55.350Z INFO [200] login utente completato
+2025-12-19T19:44:55.374Z INFO [200] collezioni recuperate con successo
+2025-12-19T19:45:01.314Z INFO [200] attributi recuperati con successo
+2025-12-19T19:45:01.325Z INFO [200] attributi recuperati con successo
+2025-12-19T19:45:01.354Z ERROR: [500] Errore durante la ricerca degli item
+2025-12-19T19:45:50.212Z INFO [201] item aggiunto con successo
+2025-12-19T19:45:50.343Z INFO [200] collezioni recuperate con successo
+2025-12-19T19:45:51.953Z INFO [200] attributi recuperati con successo
+2025-12-19T19:45:51.963Z INFO [200] attributi recuperati con successo
+2025-12-19T19:45:51.975Z ERROR: [500] Errore durante la ricerca degli item
+2025-12-19T19:46:37.221Z INFO [200] collezioni recuperate con successo
+2025-12-19T19:46:38.526Z INFO [200] attributi recuperati con successo
+2025-12-19T19:46:38.538Z INFO [200] attributi recuperati con successo
+2025-12-19T19:46:38.550Z INFO [200] item recuperati con successo
+2025-12-19T19:46:54.649Z INFO [201] item aggiunto con successo
+2025-12-19T19:46:54.755Z INFO [200] collezioni recuperate con successo
+2025-12-19T19:46:56.099Z INFO [200] attributi recuperati con successo
+2025-12-19T19:46:56.109Z INFO [200] attributi recuperati con successo
+2025-12-19T19:46:56.123Z INFO [200] item recuperati con successo
+2025-12-19T19:47:58.628Z INFO [200] collezioni recuperate con successo
+2025-12-19T19:48:05.970Z INFO [200] collezioni recuperate con successo
+2025-12-19T19:48:09.258Z INFO [200] attributi recuperati con successo
+2025-12-19T19:48:09.268Z INFO [200] attributi recuperati con successo
+2025-12-19T19:48:09.280Z INFO [200] item recuperati con successo
+2025-12-19T19:48:15.912Z INFO [201] item aggiunto con successo
+2025-12-19T19:48:15.928Z INFO [200] attributi recuperati con successo
+2025-12-19T19:48:15.940Z INFO [200] item recuperati con successo
